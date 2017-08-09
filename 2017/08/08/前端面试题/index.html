@@ -1,0 +1,66 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>ajax&amp;http | annywu</title><link rel="stylesheet" type="text/css" href="//fonts.css.network/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.1"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.1"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">ajax&amp;http</h1><a id="logo" href="/.">annywu</a><p class="description">You can be</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="Arama"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">ajax&amp;http</h1><div class="post-meta"><a href="/2017/08/08/前端面试题/#comments" class="comment-count"><a id="uyan_count_unit" href="/2017/08/08/前端面试题/"></a>留言</a><p><span class="date">Aug 08, 2017</span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><h3 id="原生ajax异步请求"><a href="#原生ajax异步请求" class="headerlink" title="原生ajax异步请求"></a>原生ajax异步请求</h3><h4 id="1、创建XmlHttpRequest对象"><a href="#1、创建XmlHttpRequest对象" class="headerlink" title="1、创建XmlHttpRequest对象"></a>1、创建XmlHttpRequest对象</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var request = new XMLHttpRequest();</div></pre></td></tr></table></figure>
+<h4 id="兼容IE6以下浏览器写法"><a href="#兼容IE6以下浏览器写法" class="headerlink" title="兼容IE6以下浏览器写法"></a>兼容IE6以下浏览器写法</h4><p>var request;<br>if(window.XMLRequest){<br>    request=new XMLRequestHttpRequest();//ie7\ie8\360等<br>}else{<br>    request = new ActiveXObject(‘Microsofe.XMLHTTP’);//ie5、ie6<br>}</p>
+<h4 id="2、发送请求"><a href="#2、发送请求" class="headerlink" title="2、发送请求"></a>2、发送请求</h4><p>(1)open(method,url,async)<br>method: GET/POST //发送方式<br>url:请求地址<br>async:true/false  默认true,表示异步<br>(2)send(string)<br>发送方式为GET时，request.send()<br>发送方式为POST时，request.send(参数)</p>
+<h4 id="3、XMLHttpRequest取得响应"><a href="#3、XMLHttpRequest取得响应" class="headerlink" title="3、XMLHttpRequest取得响应"></a>3、XMLHttpRequest取得响应</h4><p>(1)responseText:获得字符串形式的响应数据</p>
+<p>(2)responseXML:获得xml形式的响应数据</p>
+<p>(3)status和statusText：以数字和文本形式返回Http转态码</p>
+<p>(4)getAllResponseHeader():获得所以得响应报头</p>
+<p>(5)getResponseHeader():查询响应中的某个字段的值</p>
+<p>(6)readState属性</p>
+<p>“0”请求未初始化，open还未调用</p>
+<p>“1”:服务器连接已经建立，open已调用</p>
+<p>“2”:请求已接收，也就是接收到头信息了</p>
+<p>“3”:请求处理中，也就是接收到响应主体了</p>
+<p>“4”:请求已经完成，且响应就绪，响应完成了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var  request;</div><div class="line"></div><div class="line">request.open(&quot;GET&quot;,&quot;getDate&quot;,true);</div><div class="line"></div><div class="line">request.send();</div><div class="line"></div><div class="line">//监听返回的转态，200和4代表响应成功</div><div class="line"></div><div class="line">request.onreadystatechange=function()&#123;</div><div class="line">	if(request.readState==4&amp;&amp;request.status==200)&#123;</div><div class="line">		//需要处理的事物</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h3><p>默认情况下，JavaScript在发送AJAX请求时，URL的域名必须和当前页面完全一致。<br>完全一致的意思是，域名要相同（www.example.com和example.com不同），协议要相同（http和https不同），端口号要相同（默认是:80端口，它和:8080就不同）。有的浏览器口子松一点，允许端口不同，大多数浏览器都会严格遵守这个限制。</p>
+<p>解决方法<br>1、通过代理服务器<br>在同源域名下架设一个代理服务器来转发，JavaScript负责把请求发送到代理服务器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&apos;/proxy?url=http://www.sina.com.cn&apos;</div></pre></td></tr></table></figure></p>
+<p>代理服务器再把结果返回，这样就遵守了浏览器的同源策略。这种方式麻烦之处在于需要服务器端额外做开发。</p>
+<p>2、jsonp<br>它有个限制，只能用GET请求，并且要求返回JavaScript。这种方式跨域实际上是利用了浏览器允许跨域引用JavaScript资源<br>JSONP通常以函数调用的形式返回,数据以参数的形式返回<br>所以我们需要在页面中准备回调函数<br>function(data){<br>    //数据处理<br>}<br>那么通过什么出发呢<br>在页面上动态创建script标签，将请求的地址写入src中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var js = document.createElement(&apos;script&apos;),</div><div class="line">head = document.getElementsByTagName(&apos;head&apos;)[0];</div><div class="line">js.src = &apos;http://api.money.126.net/data/feed/0000001,1399001?callback=refreshPrice&apos;;</div><div class="line">head.appendChild(js);</div></pre></td></tr></table></figure></p>
+<p>3、CORS(尚未补充)</p>
+<h3 id="HTTP请求-是一种规则，无状态，无记忆"><a href="#HTTP请求-是一种规则，无状态，无记忆" class="headerlink" title="HTTP请求:是一种规则，无状态，无记忆"></a>HTTP请求:是一种规则，无状态，无记忆</h3><p>  HTTP请求过程</p>
+<p>（1）建立TCP连接</p>
+<p>（2）web浏览器向web服务器发送请求指令</p>
+<p>（3）web浏览器发送请求头信息</p>
+<p>（4）web服务器应答</p>
+<p>（5）web服务器发送应答头信息</p>
+<p>（6）web服务器向浏览器发送数据</p>
+<p>（7）web服务器关闭TCP连接</p>
+<p>A、HTTP请求的4个·组成部分</p>
+<pre><code>a、HTTP请求方法或者动作(GET/POST)
+
+ b、正在请求的URL
+
+ c、请求头，包含客户环境信息、身份信息等
+
+ d、请求体（正文），包含客户提交的查询字符串信息、表单信息
+</code></pre><p>B、POST和GET方法</p>
+<pre><code>GET:(1)用于信息获取
+
+    (2)使用URL传递参数
+
+    (3)String&lt;=2000个字符左右
+
+POST:(1)用于修改服务器上的资源
+
+     (2)String&lt;=无穷大
+</code></pre><p>C、一个HTTP响应由三个部分组成</p>
+<pre><code>a、一个数字和文字组成的转态码。作用：显示请求是否成功
+
+b、响应头，包含服务器类型、日期、内容类型、长度等
+
+c、响应体，即响应正文，字符串、HTML等
+</code></pre><p>D、HTTP状态码由3个数字构成，其中首位数字定义了状态码的类型</p>
+<pre><code>1^^：信息类，表示收到web请求，正在进行处理中
+
+2^^：成功，表示用户请求被正确接收、理解和处理，如200
+
+3^^：重定向，表示请求未成功，客户必须采取动作
+
+4^^：客户端错误，客户提交的信息有误，如400
+
+found:意味着请求中所引用的文档不存在
+
+5^^：服务器错误（最难处理的问题）,表示服务器不能完成请求处理，如500
+</code></pre></div><div class="tags"></div><div class="post-share"><div class="bdsharebuttonbox"><span style="float:left;line-height: 28px;height: 28px;font-size:16px;font-weight:blod">分享到：</span><a href="#" data-cmd="more" class="bds_more"></a><a href="#" data-cmd="mshare" title="分享到一键分享" class="bds_mshare"></a><a href="#" data-cmd="fbook" title="分享到Facebook" class="bds_fbook"></a><a href="#" data-cmd="twi" title="分享到Twitter" class="bds_twi"></a><a href="#" data-cmd="linkedin" title="分享到linkedin" class="bds_linkedin"></a><a href="#" data-cmd="youdao" title="分享到有道云笔记" class="bds_youdao"></a><a href="#" data-cmd="evernotecn" title="分享到印象笔记" class="bds_evernotecn"></a><a href="#" data-cmd="weixin" title="分享到微信" class="bds_weixin"></a><a href="#" data-cmd="qzone" title="分享到QQ空间" class="bds_qzone"></a><a href="#" data-cmd="tsina" title="分享到新浪微博" class="bds_tsina"></a></div></div><div class="post-nav"><a href="/2017/08/07/bootstrap兼容的一些tips/" class="next">bootstrap兼容的一些tips</a></div><div id="comments"><div id="uyan_frame"></div></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#原生ajax异步请求"><span class="toc-text">原生ajax异步请求</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、创建XmlHttpRequest对象"><span class="toc-text">1、创建XmlHttpRequest对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#兼容IE6以下浏览器写法"><span class="toc-text">兼容IE6以下浏览器写法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、发送请求"><span class="toc-text">2、发送请求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、XMLHttpRequest取得响应"><span class="toc-text">3、XMLHttpRequest取得响应</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#跨域"><span class="toc-text">跨域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP请求-是一种规则，无状态，无记忆"><span class="toc-text">HTTP请求:是一种规则，无状态，无记忆</span></a></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/08/08/前端面试题/">ajax&http</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/07/bootstrap兼容的一些tips/">bootstrap兼容的一些tips</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/07/js常见兼容/">js常见的兼容写法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/30/多行文本溢出问题/">多行文本溢出问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/29/hello-world/">Hello World</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/bootstrap兼容/" style="font-size: 15px;">bootstrap兼容</a> <a href="/tags/css/" style="font-size: 15px;">css</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">Baidu Site Haritası</a> |  <a href="/atom.xml">订阅</a> |  <a href="/about/">关于</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次</p><p><span> Copyright &copy;<a href="/." rel="nofollow">annywu.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.1"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.1" async></script><script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":["mshare","weixin","tsina","qzone","linkedin","fbook","twi","print","renren","sqq","evernotecn","bdysc","tqq","tqf","bdxc","kaixin001","tieba","douban","bdhome","thx","ibaidu","meilishuo","mogujie","diandian","huaban","duitang","hx","fx","youdao","sdo","qingbiji","people","xinhua","mail","isohu","yaolan","wealink","ty","iguba","h163","copy"],"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"]}};with(document)0[(getElementsByTagName('head')[0]||head).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script><script src="http://v2.uyan.cc/code/uyan.js?uid=2140228"></script></body></html>
