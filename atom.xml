@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-09-05T15:26:15.434Z</updated>
+  <updated>2017-11-08T15:51:43.014Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,14 +20,14 @@
     <link href="http://yoursite.com/2017/09/05/cookies/"/>
     <id>http://yoursite.com/2017/09/05/cookies/</id>
     <published>2017-09-05T15:25:29.000Z</published>
-    <updated>2017-09-05T15:26:15.434Z</updated>
+    <updated>2017-11-08T15:51:43.014Z</updated>
     
-    <content type="html"><![CDATA[<p>##cookie值中包含等号、空格、分号等特殊字符的处理<br>通过encodeURIComponent(URIstring)对URL进行编码<br>decodeURIComponent() 函数可对 encodeURIComponent() 函数编码的 URI 进行解码</p>
+    <content type="html"><![CDATA[<h2 id="cookie值中包含等号、空格、分号等特殊字符的处理"><a href="#cookie值中包含等号、空格、分号等特殊字符的处理" class="headerlink" title="cookie值中包含等号、空格、分号等特殊字符的处理"></a>cookie值中包含等号、空格、分号等特殊字符的处理</h2><p>通过encodeURIComponent(URIstring)对URL进行编码<br>decodeURIComponent() 函数可对 encodeURIComponent() 函数编码的 URI 进行解码</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;##cookie值中包含等号、空格、分号等特殊字符的处理&lt;br&gt;通过encodeURIComponent(URIstring)对URL进行编码&lt;br&gt;decodeURIComponent() 函数可对 encodeURIComponent() 函数编码的 URI 进行解码&lt;
+      &lt;h2 id=&quot;cookie值中包含等号、空格、分号等特殊字符的处理&quot;&gt;&lt;a href=&quot;#cookie值中包含等号、空格、分号等特殊字符的处理&quot; class=&quot;headerlink&quot; title=&quot;cookie值中包含等号、空格、分号等特殊字符的处理&quot;&gt;&lt;/a&gt;cookie值中
     
     </summary>
     
@@ -41,7 +41,7 @@
     <link href="http://yoursite.com/2017/08/16/node%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
     <id>http://yoursite.com/2017/08/16/node环境配置/</id>
     <published>2017-08-16T15:17:30.000Z</published>
-    <updated>2017-11-08T15:30:38.744Z</updated>
+    <updated>2017-11-08T15:51:16.374Z</updated>
     
     <content type="html"><![CDATA[<p>node下载有两种方式，一种是直接在官网上下载<a href="https://nodejs.org/en/download/" target="_blank" rel="external">node安装包</a>,像平常安装软件一样，点击next直至完成，简单粗暴。但是不利于node版本控制，同时也需要环境配置，这里不多说。我们看第二种配置。</p>
 <h3 id="使用nvm下载node"><a href="#使用nvm下载node" class="headerlink" title="使用nvm下载node"></a>使用nvm下载node</h3><ul>
@@ -67,10 +67,10 @@
 </ul>
 <h3 id="npm安装（包管理工具）"><a href="#npm安装（包管理工具）" class="headerlink" title="npm安装（包管理工具）"></a>npm安装（包管理工具）</h3><ul>
 <li>在docs命令中输入 <code>npm install npm -g</code> 在C:\dev\nvm\npm目录中可以看到下载中的文件，以后我们只要用npm安装包的时候加上 <code>-g</code> 就可以把包安装在我们配置好的全局路径下了。</li>
-<li>配置npm环境变量 NPM_HOME,变量值为：C:\dev\nvm\npm<br>*同上再path后面加入%NPM_HOME%,注意用分号隔开。</li>
+<li>配置npm环境变量 NPM_HOME,变量值为：C:\dev\nvm\npm</li>
+<li>同上再path后面加入%NPM_HOME%,注意用分号隔开。</li>
 </ul>
-<p><em>至此node环境配置基本完成。
-</em>在这里小编给大家提个醒，环境变量一定要配置成功，变量名可以自行定义注意区别，小编就因为这个踩过坑，在配置vue环境的时候，无论怎么装都是出现“找不到vue<br>*这个命令”，，明明node可以运行，vue也装了全局环境，后来重新去查看环境变量，发现npm的环境变量写成nvm的了，，所以环境变量一定要写清楚。    </p>
+<p>*至此node环境配置基本完成。在这里小编给大家提个醒，环境变量一定要配置成功，变量名可以自行定义注意区别，小编就因为这个踩过坑，在配置vue环境的时候，无论怎么装都是出现“找不到vue这个命令”，，明明node可以运行，vue也装了全局环境，后来重新去查看环境变量，发现npm的环境变量写成nvm的了，，所以环境变量一定要写清楚。    </p>
 ]]></content>
     
     <summary type="html">
@@ -202,25 +202,6 @@ found:意味着请求中所引用的文档不存在
   </entry>
   
   <entry>
-    <title>js常见的兼容写法</title>
-    <link href="http://yoursite.com/2017/08/07/js%E5%B8%B8%E8%A7%81%E5%85%BC%E5%AE%B9/"/>
-    <id>http://yoursite.com/2017/08/07/js常见兼容/</id>
-    <published>2017-08-07T11:45:25.000Z</published>
-    <updated>2017-08-09T12:49:47.048Z</updated>
-    
-    <content type="html"><![CDATA[<p>###阻止事件冒泡<br> function stopEvent(event){ //阻止冒泡事件<br>     //取消事件冒泡<br>     var e=arguments.callee.caller.arguments[0]||event;<br>     //若省略此句，下面的e改为event，IE运行可以，但是其他浏览器就不兼容<br>     if (e &amp;&amp; e.stopPropagation) {<br>     // this code is for Mozilla and Opera<br>     e.stopPropagation();<br>     } else if (window.event) {<br>     // this code is for IE<br>      window.event.cancelBubble = true;<br>     }<br>   }</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;###阻止事件冒泡&lt;br&gt; function stopEvent(event){ //阻止冒泡事件&lt;br&gt;     //取消事件冒泡&lt;br&gt;     var e=arguments.callee.caller.arguments[0]||event;&lt;br&gt;     //若
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>bootstrap兼容的一些tips</title>
     <link href="http://yoursite.com/2017/08/07/bootstrap%E5%85%BC%E5%AE%B9%E7%9A%84%E4%B8%80%E4%BA%9Btips/"/>
     <id>http://yoursite.com/2017/08/07/bootstrap兼容的一些tips/</id>
@@ -259,6 +240,25 @@ found:意味着请求中所引用的文档不存在
     
     
       <category term="bootstrap兼容" scheme="http://yoursite.com/tags/bootstrap%E5%85%BC%E5%AE%B9/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>js常见的兼容写法</title>
+    <link href="http://yoursite.com/2017/08/07/js%E5%B8%B8%E8%A7%81%E5%85%BC%E5%AE%B9/"/>
+    <id>http://yoursite.com/2017/08/07/js常见兼容/</id>
+    <published>2017-08-07T11:45:25.000Z</published>
+    <updated>2017-08-09T12:49:47.048Z</updated>
+    
+    <content type="html"><![CDATA[<p>###阻止事件冒泡<br> function stopEvent(event){ //阻止冒泡事件<br>     //取消事件冒泡<br>     var e=arguments.callee.caller.arguments[0]||event;<br>     //若省略此句，下面的e改为event，IE运行可以，但是其他浏览器就不兼容<br>     if (e &amp;&amp; e.stopPropagation) {<br>     // this code is for Mozilla and Opera<br>     e.stopPropagation();<br>     } else if (window.event) {<br>     // this code is for IE<br>      window.event.cancelBubble = true;<br>     }<br>   }</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;###阻止事件冒泡&lt;br&gt; function stopEvent(event){ //阻止冒泡事件&lt;br&gt;     //取消事件冒泡&lt;br&gt;     var e=arguments.callee.caller.arguments[0]||event;&lt;br&gt;     //若
+    
+    </summary>
+    
     
   </entry>
   
