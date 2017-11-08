@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-09T13:02:57.455Z</updated>
+  <updated>2017-09-05T15:26:15.434Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,110 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>cookies</title>
+    <link href="http://yoursite.com/2017/09/05/cookies/"/>
+    <id>http://yoursite.com/2017/09/05/cookies/</id>
+    <published>2017-09-05T15:25:29.000Z</published>
+    <updated>2017-09-05T15:26:15.434Z</updated>
+    
+    <content type="html"><![CDATA[<p>##cookie值中包含等号、空格、分号等特殊字符的处理<br>通过encodeURIComponent(URIstring)对URL进行编码<br>decodeURIComponent() 函数可对 encodeURIComponent() 函数编码的 URI 进行解码</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;##cookie值中包含等号、空格、分号等特殊字符的处理&lt;br&gt;通过encodeURIComponent(URIstring)对URL进行编码&lt;br&gt;decodeURIComponent() 函数可对 encodeURIComponent() 函数编码的 URI 进行解码&lt;
+    
+    </summary>
+    
+    
+      <category term="存储" scheme="http://yoursite.com/tags/%E5%AD%98%E5%82%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>windows下node环境配置</title>
+    <link href="http://yoursite.com/2017/08/16/node%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+    <id>http://yoursite.com/2017/08/16/node环境配置/</id>
+    <published>2017-08-16T15:17:30.000Z</published>
+    <updated>2017-11-08T15:30:38.744Z</updated>
+    
+    <content type="html"><![CDATA[<p>node下载有两种方式，一种是直接在官网上下载<a href="https://nodejs.org/en/download/" target="_blank" rel="external">node安装包</a>,像平常安装软件一样，点击next直至完成，简单粗暴。但是不利于node版本控制，同时也需要环境配置，这里不多说。我们看第二种配置。</p>
+<h3 id="使用nvm下载node"><a href="#使用nvm下载node" class="headerlink" title="使用nvm下载node"></a>使用nvm下载node</h3><ul>
+<li>首先要去下载<a href="https://github.com/coreybutler/nvm-windows/releases" target="_blank" rel="external">nvm包</a>，这里要注意需要翻墙，也可以在这里<a href="http://pan.baidu.com/s/1c24aAT6" target="_blank" rel="external">百度云</a>密码：27av下载。下载后解压到一个地方，比如C:\dev\nvm，这里可能要注意解压的姿势，在你要解压的地方右键解压到当前文件。</li>
+<li><p>双击install.cmd 直接回车，成功后，会在C盘根目录生成一个setting.txt的文本文件，把这个文件剪切到C:\dev\nvm中，然后修改内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">root:  C:\dev\nvm</div><div class="line">path:  C:\dev\nodejs</div><div class="line">arch: 64 //这里是系统64位，32的写32</div><div class="line">proxy: none</div></pre></td></tr></table></figure>
+</li>
+<li><p>如果没有生成setting文本文件，可手动增加</p>
+<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3></li>
+<li>右键点开电脑属性，高级系统配置-环境配置</li>
+<li>在用户变量里，新建NVM_HOME和NVM_SYMLINK NVM_HOME的变量值为C:\dev\nvm;NVM_SYMLINK的变量值为：C:\dev\nodejs;</li>
+<li>然后再path后面（注意用分号隔开）输入;%NVM_HOME%;%NVM_SYMLINK%;</li>
+<li>如果path中已有C:\dev\nvm;和C:\dev\nodejs;请删除；</li>
+<li>打开命令窗口输入 <code>nvm v</code> ,能够查到nvm的版本信息，那么我们安装成功。 </li>
+</ul>
+<h3 id="nodejs安装"><a href="#nodejs安装" class="headerlink" title="nodejs安装"></a>nodejs安装</h3><p>接下来我们可以安装node.js了</p>
+<ul>
+<li>输入命令 <code>nvm install latest</code> 可以安装最新的node版本</li>
+<li>也可以直接选定版本安装 如<code>nvm install node版本号</code></li>
+<li>如果你是第一次下载，在use之前，C:\dev目录下是没有nodejs这个文件夹的，在输入比如： nvm use 5.11.0 之后，你会发现，C:\dev目录下多了一个nodejs文件夹，这个文件夹不是单纯的文件夹，它是一个快捷方式，指向了 C:\dev\nvm 里的 v5.11.0 文件夹。</li>
+<li>通过 <code>nvm use 版本号</code> ，可以实现版本切换</li>
+<li>备注： 如果你的电脑系统是32 位的，那么在下载nodejs版本的时候，一定要指明 32 如： nvm install 5.11.0 32 这样在32位的电脑系统中，才可以使用，默认是64位的。</li>
+</ul>
+<h3 id="npm安装（包管理工具）"><a href="#npm安装（包管理工具）" class="headerlink" title="npm安装（包管理工具）"></a>npm安装（包管理工具）</h3><ul>
+<li>在docs命令中输入 <code>npm install npm -g</code> 在C:\dev\nvm\npm目录中可以看到下载中的文件，以后我们只要用npm安装包的时候加上 <code>-g</code> 就可以把包安装在我们配置好的全局路径下了。</li>
+<li>配置npm环境变量 NPM_HOME,变量值为：C:\dev\nvm\npm<br>*同上再path后面加入%NPM_HOME%,注意用分号隔开。</li>
+</ul>
+<p><em>至此node环境配置基本完成。
+</em>在这里小编给大家提个醒，环境变量一定要配置成功，变量名可以自行定义注意区别，小编就因为这个踩过坑，在配置vue环境的时候，无论怎么装都是出现“找不到vue<br>*这个命令”，，明明node可以运行，vue也装了全局环境，后来重新去查看环境变量，发现npm的环境变量写成nvm的了，，所以环境变量一定要写清楚。    </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;node下载有两种方式，一种是直接在官网上下载&lt;a href=&quot;https://nodejs.org/en/download/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;node安装包&lt;/a&gt;,像平常安装软件一样，点击next直至完成，简单粗暴。但是不
+    
+    </summary>
+    
+    
+      <category term="环境配置" scheme="http://yoursite.com/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>日常小笔记——严格模式下的限制</title>
+    <link href="http://yoursite.com/2017/08/09/%E6%97%A5%E5%B8%B8%E5%B0%8F%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F%E4%B8%8B%E7%9A%84%E9%99%90%E5%88%B6/"/>
+    <id>http://yoursite.com/2017/08/09/日常小笔记——严格模式下的限制/</id>
+    <published>2017-08-09T15:47:41.000Z</published>
+    <updated>2017-08-09T15:57:02.231Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="“use-strict”"><a href="#“use-strict”" class="headerlink" title="“use strict”"></a>“use strict”</h2><p>“use strict” 声明js文件书写方式为严格模式，那么严格模式下游那些限制呢*</p>
+<ul>
+<li>变量必须声明后再使用</li>
+<li>函数的参数不能有同名属性，否则报错</li>
+<li>不能使用with语句</li>
+<li>不能对只读属性赋值，否则报错</li>
+<li>不能使用前缀0表示八进制，否则报错</li>
+<li>不能删除变量delete prop,只能删除属性delete global[prop]</li>
+<li>eval 不会再他的外层作用域引入变量</li>
+<li>eval 和 arguments 不能被重新赋值</li>
+<li>arguments 不会自动反映函数参数的变化</li>
+<li>不能使用 arguments.callee</li>
+<li>不能使用 arguments.caller</li>
+<li>禁止this 指向全局对象</li>
+<li>不能使用fn.caller 和fn.arguments获取函数调用的堆栈</li>
+<li>增加了保留字（比如protected、static interface）</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;“use-strict”&quot;&gt;&lt;a href=&quot;#“use-strict”&quot; class=&quot;headerlink&quot; title=&quot;“use strict”&quot;&gt;&lt;/a&gt;“use strict”&lt;/h2&gt;&lt;p&gt;“use strict” 声明js文件书写方式为严格模式，那
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>ajax&amp;http</title>
@@ -98,6 +202,25 @@ found:意味着请求中所引用的文档不存在
   </entry>
   
   <entry>
+    <title>js常见的兼容写法</title>
+    <link href="http://yoursite.com/2017/08/07/js%E5%B8%B8%E8%A7%81%E5%85%BC%E5%AE%B9/"/>
+    <id>http://yoursite.com/2017/08/07/js常见兼容/</id>
+    <published>2017-08-07T11:45:25.000Z</published>
+    <updated>2017-08-09T12:49:47.048Z</updated>
+    
+    <content type="html"><![CDATA[<p>###阻止事件冒泡<br> function stopEvent(event){ //阻止冒泡事件<br>     //取消事件冒泡<br>     var e=arguments.callee.caller.arguments[0]||event;<br>     //若省略此句，下面的e改为event，IE运行可以，但是其他浏览器就不兼容<br>     if (e &amp;&amp; e.stopPropagation) {<br>     // this code is for Mozilla and Opera<br>     e.stopPropagation();<br>     } else if (window.event) {<br>     // this code is for IE<br>      window.event.cancelBubble = true;<br>     }<br>   }</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;###阻止事件冒泡&lt;br&gt; function stopEvent(event){ //阻止冒泡事件&lt;br&gt;     //取消事件冒泡&lt;br&gt;     var e=arguments.callee.caller.arguments[0]||event;&lt;br&gt;     //若
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>bootstrap兼容的一些tips</title>
     <link href="http://yoursite.com/2017/08/07/bootstrap%E5%85%BC%E5%AE%B9%E7%9A%84%E4%B8%80%E4%BA%9Btips/"/>
     <id>http://yoursite.com/2017/08/07/bootstrap兼容的一些tips/</id>
@@ -136,25 +259,6 @@ found:意味着请求中所引用的文档不存在
     
     
       <category term="bootstrap兼容" scheme="http://yoursite.com/tags/bootstrap%E5%85%BC%E5%AE%B9/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>js常见的兼容写法</title>
-    <link href="http://yoursite.com/2017/08/07/js%E5%B8%B8%E8%A7%81%E5%85%BC%E5%AE%B9/"/>
-    <id>http://yoursite.com/2017/08/07/js常见兼容/</id>
-    <published>2017-08-07T11:45:25.000Z</published>
-    <updated>2017-08-09T12:49:47.048Z</updated>
-    
-    <content type="html"><![CDATA[<p>###阻止事件冒泡<br> function stopEvent(event){ //阻止冒泡事件<br>     //取消事件冒泡<br>     var e=arguments.callee.caller.arguments[0]||event;<br>     //若省略此句，下面的e改为event，IE运行可以，但是其他浏览器就不兼容<br>     if (e &amp;&amp; e.stopPropagation) {<br>     // this code is for Mozilla and Opera<br>     e.stopPropagation();<br>     } else if (window.event) {<br>     // this code is for IE<br>      window.event.cancelBubble = true;<br>     }<br>   }</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;###阻止事件冒泡&lt;br&gt; function stopEvent(event){ //阻止冒泡事件&lt;br&gt;     //取消事件冒泡&lt;br&gt;     var e=arguments.callee.caller.arguments[0]||event;&lt;br&gt;     //若
-    
-    </summary>
-    
     
   </entry>
   
